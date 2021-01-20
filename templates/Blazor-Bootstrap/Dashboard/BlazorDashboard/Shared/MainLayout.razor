@@ -1,0 +1,58 @@
+﻿@inherits LayoutComponentBase
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+    <span class="navbar-brand">
+        <span id="menuToggle" class="fas @sidebarIconCss" @onclick="ToggleSidebar"></span>
+    </span>
+    <a class="navbar-brand" href="/">BlazorDashboard</a>
+    <button @onclick="ToggleNavbar" class="navbar-toggler" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="@navbarCss navbar-collapse">
+      <NavbarMenu/>
+    </div>
+</nav>
+
+<div id="wrapper" class="@sidebarCss">
+    <div id="sidebar-wrapper">
+        <SidebarMenu /> 
+    </div>
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            @Body
+        </div>
+    </div>
+</div>
+ 
+@code{
+
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    private string sidebarCss = "toggled";
+    private string sidebarIconCss = "fa-chevron-circle-left";
+
+    private string navbarCss = "collapse";
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += (o, e) =>
+        {
+            navbarCss = "collapse"; 
+            StateHasChanged();
+        };
+    }
+
+    void ToggleSidebar()
+    {
+        sidebarCss = string.IsNullOrEmpty(sidebarCss) ? "toggled" : null;
+        sidebarIconCss = string.IsNullOrEmpty(sidebarCss) ? "fa-chevron-circle-right" : "fa-chevron-circle-left"; 
+    }
+
+    private void ToggleNavbar()
+    {
+        navbarCss = string.IsNullOrEmpty(navbarCss)  ? "collapse" : null;
+    }
+
+}

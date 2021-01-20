@@ -1,0 +1,40 @@
+﻿@using Microsoft.AspNetCore.Components.Authorization
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using Services
+
+@inject NavigationManager Navigation
+@inject SignOutSessionStateManager SignOutManager
+@inject OidcService Oidc
+
+@*<AuthorizeView>
+        <Authorized>
+            Hello, @context.User.Identity.Name!
+            <button class="nav-link btn btn-link" @onclick="BeginSignOut">Log out</button>
+        </Authorized>
+        <NotAuthorized>
+            <a href="authentication/login">Log in</a>
+        </NotAuthorized>
+    </AuthorizeView>*@
+
+<AuthorizeView>
+    <Authorized>
+        Hello, @context.User.Identity.Name!
+        <button class="nav-link btn btn-link" @onclick="BeginSignOut">Log out</button>
+        <button class="nav-link btn btn-link" @onclick="Oidc.ProfileEditing">Edit Profile</button>
+    </Authorized>
+    <NotAuthorized>
+        <a href="authentication/login">Log in</a>
+        @*<button class="nav-link btn btn-link" @onclick="SignIn">SignIn</button>*@
+    <button class="nav-link btn btn-link" @onclick="Oidc.SigninAndSignup">SigninAndSignup</button>
+        <button class="nav-link btn btn-link" @onclick="Oidc.Signup">SignUp</button>
+        <button class="nav-link btn btn-link" @onclick="Oidc.PasswordReset">Reset password</button>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code{
+    private async Task BeginSignOut(MouseEventArgs args)
+    {
+        await SignOutManager.SetSignOutState();
+        Navigation.NavigateTo("authentication/logout");
+    }
+}

@@ -1,0 +1,11 @@
+﻿.boot-up {
+    height: 100vh;
+    min-height: 250px;
+    /*background-image: url('https://source.unsplash.com/7JX0-bfiuxQ/1920x1080');*/
+    /*background-image: url('/img/boot-up.png');*/
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    grid-row: span 3;
+    margin: 1rem;
+}

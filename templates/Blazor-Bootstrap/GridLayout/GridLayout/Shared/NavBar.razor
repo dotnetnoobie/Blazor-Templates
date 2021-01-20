@@ -1,0 +1,45 @@
+﻿<nav>
+    <a href="/">
+        <img src="/img/logo.png" /> Blazor
+    </a>
+    <button @onclick="ToggleNavBar">
+        <span></span>
+    </button>
+    <div class="@NavBarCssClass">
+        <ul>
+            <li>
+                <NavLink href="/counter">
+                    <span class="oi oi-plus" aria-hidden="true"></span> Counter
+                </NavLink>
+            </li>
+            <li>
+                <NavLink href="/fetchdata">
+                    <span class="oi oi-list-rich" aria-hidden="true"></span>  Fetch data
+                </NavLink>
+            </li> 
+        </ul>
+    </div>
+</nav>
+
+@code {
+    private bool collapseNavBar = true;
+
+    private string NavBarCssClass => collapseNavBar ? "collapse" : null;
+
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += (o, e) =>
+        {
+            collapseNavBar = true;
+            StateHasChanged();
+        };
+    }
+
+    private void ToggleNavBar()
+    {
+        collapseNavBar = !collapseNavBar;
+    }
+}

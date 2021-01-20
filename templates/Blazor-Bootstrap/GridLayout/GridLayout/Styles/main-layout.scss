@@ -1,0 +1,26 @@
+﻿$gap: 0.5rem;
+
+body > #app {
+    height: 100vh;
+    display: grid;
+    grid-gap: $gap;
+    grid-template-rows: 50px 1fr 50px;
+    grid-template-areas: "header" "content" "footer"
+}
+
+header { 
+    grid-area: header;
+}
+
+main { 
+    grid-area: content;
+    margin: $gap;
+}
+
+footer {
+    display: grid;
+    background-color: whitesmoke;
+    grid-area: footer; 
+    align-items: center;
+    @extend .text-center;
+}

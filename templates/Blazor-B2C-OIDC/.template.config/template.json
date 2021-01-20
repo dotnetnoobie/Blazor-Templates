@@ -1,0 +1,74 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": ".net noobie",
+  "classifications": [ "Web", "Blazor", "WebAssembly", "B2C", "OIDC" ],
+  "name": "Blazor WebAssembly B2C OIDC",
+  "identity": "DotNetNoobie.Blazor.B2C.OIDC",
+  "shortName": "blazorwasm-b2c-oidc",
+  "sourceName": "BlazorOIDCB2C",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": false,
+  "sources": [
+    {
+      "exclude": [
+        ".template.config/**",
+        ".vs/**",
+        "**/bin/**",
+        "**/obj/**"
+      ]
+    }
+  ],
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "net5.0",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "net5.0",
+          "description": "net5.0"
+        }
+      ],
+      "replaces": "net5.0",
+      "defaultValue": "net5.0"
+    },
+    "DomainName": {
+      "type": "parameter",
+      "defaultValue": "DomainName",
+      "replaces": "Domain_Name"
+    },
+    "ClientId": {
+      "type": "parameter",
+      "defaultValue": "11111111-1111-1111-1111-111111111111",
+      "replaces": "11111111-1111-1111-1111-111111111111"
+    },
+    "SignInAndSignUp": {
+      "type": "parameter",
+      "defaultValue": "B2C_1_SignInAndSignUp",
+      "replaces": "B2C_1_SignInAndSignUp"
+    },
+    "SignUp": {
+      "type": "parameter",
+      "defaultValue": "B2C_1_SignUp",
+      "replaces": "B2C_1_SignUp"
+    },
+    "SignIn": {
+      "type": "parameter",
+      "defaultValue": "B2C_1_SignIn",
+      "replaces": "B2C_1_SignIn"
+    },
+    "PasswordReset": {
+      "type": "parameter",
+      "defaultValue": "B2C_1_PasswordReset",
+      "replaces": "B2C_1_PasswordReset"
+    },
+    "ProfileEditing": {
+      "type": "parameter",
+      "defaultValue": "B2C_1_ProfileEditing",
+      "replaces": "B2C_1_ProfileEditing"
+    }
+  }
+}

@@ -1,0 +1,9 @@
+﻿.masthead {
+    margin-top: -56px;
+    height: 100vh;
+    min-height: 500px;
+    background-image: url('https://source.unsplash.com/7JX0-bfiuxQ/1920x1080');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}

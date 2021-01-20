@@ -1,0 +1,41 @@
+﻿@import "bootstrap/_navbar.scss";
+
+nav {
+    @extend .navbar;
+    @extend .navbar-expand-sm;
+    @extend .navbar-dark;
+    @extend .bg-dark;
+    @extend .fixed-top; 
+}
+
+nav > a {
+    @extend .navbar-brand;
+}
+
+nav > button {
+    @extend .navbar-toggler;
+}
+
+nav > button > span {
+    @extend .navbar-toggler-icon;
+}
+
+nav > div {
+    /*    @extend .collapse;*/
+    @extend .navbar-collapse;
+    @extend .d-sm-inline-flex;
+    @extend .flex-sm-row-reverse;
+}
+
+nav > div > ul {
+    @extend .navbar-nav;
+    @extend .flex-grow-1;
+}
+
+nav > div > ul > li {
+    @extend .nav-item;
+}
+
+nav > div > ul > li > a {
+    @extend .nav-link;
+}

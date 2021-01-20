@@ -1,0 +1,10 @@
+[
+  {
+    "outputFile": "Shared/ProfileCard.razor.css",
+    "inputFile": "Shared/ProfileCard.razor.scss"
+  },
+  {
+    "outputFile": "Shared/RotatingProfileCard.razor.css",
+    "inputFile": "Shared/RotatingProfileCard.razor.scss"
+  }
+]

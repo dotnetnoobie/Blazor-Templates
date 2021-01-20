@@ -1,0 +1,24 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": ".net noobie",
+  "classifications": [ "Web", "Blazor", "WebAssembly" ],
+  "name": "Blazor WebAssembly Basic Static Web App",
+  "identity": "DotNetNoobie.Blazor.Serverless.App",
+  "shortName": "blazorwasm-swa-basic",
+  "sourceName": "BlazorApp",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": false,
+  "sources": [
+    {
+      "exclude": [
+        ".template.config/**",
+        ".vs/**",
+        "**/bin/**",
+        "**/obj/**"
+      ]
+    }
+  ]
+}

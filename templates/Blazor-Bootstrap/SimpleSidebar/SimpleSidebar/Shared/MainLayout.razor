@@ -1,0 +1,100 @@
+﻿@inherits LayoutComponentBase
+
+<div class="d-flex @toggleMenuCss" id="wrapper">
+
+    <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading">
+            <a href="/"><span class="oi oi-home" aria-hidden="true"></span> SimpleSidebar</a>
+        </div>
+        <div class="list-group list-group-flush">
+            <a href="dashboard" class="list-group-item list-group-item-action bg-light">
+                <span class="oi oi-dashboard" aria-hidden="true"></span> Dashboard
+            </a>
+            <a href="shortcuts" class="list-group-item list-group-item-action bg-light">
+                <span class="oi oi-link-intact" aria-hidden="true"></span> Shortcuts
+            </a>
+            <a href="overview" class="list-group-item list-group-item-action bg-light">
+                <span class="oi oi-eye" aria-hidden="true"></span> Overview
+            </a>
+            <a href="events" class="list-group-item list-group-item-action bg-light">
+                <span class="oi oi-bolt" aria-hidden="true"></span> Events
+            </a>
+            <a href="profile" class="list-group-item list-group-item-action bg-light">
+                <span class="oi oi-person" aria-hidden="true"></span> Profile
+            </a>
+            <a href="status" class="list-group-item list-group-item-action bg-light">
+                <span class="oi oi-flag" aria-hidden="true"></span> Status
+            </a>
+        </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+
+        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            @*<button class="btn btn-primary" id="menu-toggle" @onclick="ToggleMenu">Toggle Menu</button>*@
+
+            <button class="btn btn-link" type="button" @onclick="ToggleMenu">
+                <span class="oi oi-arrow-circle-@toggleMenuButtonCss" aria-hidden="true"></span>
+            </button>
+
+            <button class="navbar-toggler" type="button" @onclick="ToggleNavMenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse @NavMenuCssClass " id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="counter">
+                            <span class="oi oi-plus" aria-hidden="true"></span> Counter
+                        </NavLink>
+                    </li>
+                    <li class="nav-item px-3">
+                        <NavLink class="nav-link" href="fetchdata">
+                            <span class="oi oi-list-rich" aria-hidden="true"></span> Fetch data
+                        </NavLink>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="container-fluid">
+            @Body
+        </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+</div>
+<!-- /#wrapper -->
+ 
+@code {
+    string toggleMenuCss;
+
+    void ToggleMenu() => toggleMenuCss = string.IsNullOrEmpty(toggleMenuCss) ? "toggled" : "";
+    private string toggleMenuButtonCss => toggleMenuCss == "toggled" ? "right" : "left";
+
+    private bool collapseNavMenu = true;
+
+    private string NavMenuCssClass => collapseNavMenu ? "collapse" : null;
+
+    [Inject]
+    public NavigationManager NavigationManager { get; set; }
+
+    protected override void OnInitialized()
+    {
+        NavigationManager.LocationChanged += (o, e) =>
+        {
+            // toggleMenuCss = "toggled";
+            collapseNavMenu = true; 
+            StateHasChanged();
+        };
+    }
+
+    private void ToggleNavMenu()
+    {
+        Console.WriteLine("Toggle NavBar Button");
+
+        collapseNavMenu = !collapseNavMenu;
+    }
+}

@@ -1,0 +1,12 @@
+﻿@import "bootstrap/bootstrap";
+@import "open-iconic/open-iconic";
+@import "reset";
+@import "error-ui";
+@import "splash-ui";
+@import "main-layout";
+@import "navbar";
+
+.loading {
+    display: grid;
+    place-items: center;
+}

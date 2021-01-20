@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+	<Import Project="package.csproj" Condition="Exists('package.csproj')" />
+	
+	<PropertyGroup>
+		<TargetFramework>netstandard2.0</TargetFramework>
+		<PackageType>Template</PackageType>
+		<IncludeContentInPack>true</IncludeContentInPack>
+		<IncludeBuildOutput>false</IncludeBuildOutput>
+		<ContentTargetFolders>content</ContentTargetFolders>
+	</PropertyGroup>
+	
+	<ItemGroup>
+		<Content Include="templates\**\*" Exclude="templates\**\bin\**;templates\**\obj\**" />
+		<Compile Remove="**\*" />
+		<None Remove="README.md" />
+		<None Remove="templates\Blazor-SWA-B2C-OIDC\Client\Shared\LoginDisplay.razor" />
+		<None Remove="templates\Blazor-SWA-B2C-OIDC\Client\Shared\MainLayout.razor.css" />
+		<None Remove="templates\Blazor-SWA-B2C-OIDC\Client\Shared\NavMenu.razor.css" />
+		<None Remove="templates\Blazor-SWA-B2C-OIDC\Client\Shared\RedirectToLogin.razor" />
+		<None Remove="templates\Boss.png" /> 
+	</ItemGroup>
+ 
+</Project>

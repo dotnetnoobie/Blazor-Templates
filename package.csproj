@@ -1,0 +1,42 @@
+<Project>
+  <PropertyGroup>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <!--Title, Description, Tags, Product-->
+  <PropertyGroup>
+    <Title>Blazor Templates</Title>
+    <Description>A collection of blazor templates.</Description>
+    <PackageTags>dotnet-new;templates</PackageTags>
+    <Product>MyBlazorTemplates</Product>
+  </PropertyGroup>
+  <!--Author, Company-->
+  <PropertyGroup>
+    <Authors>BlazorTemplates project, .net noobie</Authors>
+  </PropertyGroup>
+  <!--Repository-->
+  <PropertyGroup>
+    <PackageProjectUrl>https://github.com/dotnetnoobie/blazor-templates</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/dotnetnoobie/blazor-templates</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+  </PropertyGroup>
+  <!--PackageId, Version-->
+  <PropertyGroup>
+    <PackageId>MyBlazorTemplates</PackageId>
+    <PackageVersion>1.0.2</PackageVersion>
+  </PropertyGroup>
+  <!--Self Include-->
+  <ItemGroup>
+    <None Include="package.csproj" />
+  </ItemGroup>
+  <!--Licensing-->
+  <PropertyGroup>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="LICENSE">
+      <Pack>True</Pack>
+      <PackagePath>
+      </PackagePath>
+    </None>
+  </ItemGroup>
+</Project>

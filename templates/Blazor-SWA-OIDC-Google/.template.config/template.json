@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json.schemastore.org/template",
+  "author": ".net noobie",
+  "classifications": [ "Web", "Blazor", "WebAssembly", "OIDC" ],
+  "name": "Blazor WebAssembly OIDC Goolgle Static Web App",
+  "identity": "DotNetNoobie.Blazor.Google.OIDC.Serverless.App",
+  "shortName": "blazorwasm-swa-oidc-google",
+  "sourceName": "BlazorApp",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": false,
+  "sources": [
+    {
+      "exclude": [
+        ".template.config/**",
+        ".vs/**",
+        "**/bin/**",
+        "**/obj/**"
+      ]
+    }
+  ],
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "net5.0",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "net5.0",
+          "description": "net5.0"
+        }
+      ],
+      "replaces": "net5.0",
+      "defaultValue": "net5.0"
+    },
+    "ClientId": {
+      "type": "parameter",
+      "defaultValue": "11111111111-11111111111111111111111111111111.apps.googleusercontent.com",
+      "replaces": "11111111111-11111111111111111111111111111111.apps.googleusercontent.com"
+    }
+  }
+} 

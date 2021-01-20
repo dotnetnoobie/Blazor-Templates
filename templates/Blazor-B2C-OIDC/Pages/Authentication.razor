@@ -1,0 +1,129 @@
+﻿@page "/authentication/{action}"
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication
+@using System.Web
+
+@inject NavigationManager navigation
+@inject SignOutSessionStateManager SignOutManager
+@inject OidcService Oidc
+
+<RemoteAuthenticatorView Action="@Action">
+    <Registering>
+        Redirecting
+    </Registering>
+    <UserProfile>
+        Redirecting
+    </UserProfile>
+</RemoteAuthenticatorView>
+
+@code{
+    [Parameter] public string Action { get; set; }
+
+    // [CascadingParameter] private Task<AuthenticationState> authenticationStateTask { get; set; }
+
+    //public override async Task SetParametersAsync(ParameterView parameters)
+    //{
+    //    await base.SetParametersAsync(parameters);
+
+    //    switch (Action.ToLower())
+    //    {
+    //        case "register":
+    //            {
+    //                Oidc.Signup();
+    //            }
+    //            break;
+    //        case "profile":
+    //            {
+    //                Oidc.ProfileEditing();
+    //            }
+    //            break;
+    //        case "login":
+    //            {
+    //                Oidc.Signin();
+    //            }
+    //            break;
+    //        case "password":
+    //            {
+    //                Oidc.PasswordReset();
+    //            }
+    //            break;
+
+    //        default:
+    //            {
+    //                var q = navigation.Uri.Split("#").Last();
+
+    //                var dic = HttpUtility.ParseQueryString(q);
+
+    //                if (!string.IsNullOrEmpty(dic["error_description"]) && dic["error_description"].StartsWith("AADB2C90118"))
+    //                {
+    //                    Oidc.PasswordReset();
+    //                }
+    //            }
+    //            break;
+    //    }
+    //}
+
+    protected override async Task OnInitializedAsync()
+    {
+        await base.OnInitializedAsync();
+
+        switch (Action.ToLower())
+        {
+            case "register":
+                {
+                    Oidc.Signup();
+                }
+                break;
+            case "profile":
+                {
+                    Oidc.ProfileEditing();
+                }
+                break;
+            case "login":
+                {
+                    Oidc.SigninAndSignup();
+                }
+                break;
+            case "logout":
+                {
+                    //var authState = await authenticationStateTask;
+                    //var user = authState.User;
+
+                    //if (user.Identity.IsAuthenticated)
+                    //{
+                    await SignOutManager.SetSignOutState();
+                    //}
+                }
+                break;
+            //case "password":
+            //    {
+            //        Oidc.PasswordReset();
+            //    }
+            //break;
+
+            default:
+                {
+                    var query = navigation.Uri.Split("#").Last();
+
+                    var parameters = HttpUtility.ParseQueryString(query);
+
+                    if (!string.IsNullOrEmpty(parameters["error_description"]) && parameters["error_description"].StartsWith("AADB2C90118"))
+                    {
+                        Oidc.PasswordReset();
+                    }
+                }
+                break;
+        }
+    }
+}
+
+
+
+@*//var q = navigation.Uri.Split("#").Last();
+
+    //var dic = HttpUtility.ParseQueryString(q);
+
+    //if (!string.IsNullOrEmpty(dic["error_description"]) && dic["error_description"].StartsWith("AADB2C90118"))
+    //{
+    //    Oidc.PasswordReset();
+    //}*@

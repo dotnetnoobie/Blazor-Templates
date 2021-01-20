@@ -1,0 +1,18 @@
+﻿@page "/application/register"
+
+@using Microsoft.AspNetCore.Components.WebAssembly.Authentication 
+
+@inject NavigationManager navigation
+@inject OidcService Oidc
+
+<RemoteAuthenticatorView Action="@RemoteAuthenticationActions.Register">
+    <Registering>
+        Redirecting 
+    </Registering>
+</RemoteAuthenticatorView>
+
+@code {
+
+    protected override void OnInitialized() => Oidc.Signup();
+
+}
